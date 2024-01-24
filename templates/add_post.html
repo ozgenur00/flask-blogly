@@ -10,7 +10,11 @@
     <form action="/users/{{ user.id }}/posts/new" method="post">
         <input type="text" name="title" placeholder="Title">
         <input type="text" name="description" placeholder="Description">
-        <button type="submit">Add Post</button>
+        <p>Tags:</p>
+        {% for tag in tags %}
+            <label><input type="checkbox" name="tags" value="{{ tag.id }}"> {{ tag.name }}</label><br>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Add Post</button>
     </form>
     
 </body>

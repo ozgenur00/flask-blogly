@@ -11,7 +11,7 @@
   <div>
     <p><a href="/users/{{ user.id }}/edit">Edit</a></p>
     <form action="/users/{{ user.id }}/delete" method="post">
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
     </form>
   </div>
   <h3>Posts</h3>
@@ -25,5 +25,5 @@
   <p>No posts yet</p>
   {% endif %}
 </div>
-<a href="/users/{{ user. id }}/posts/new">Add post</a>
+<a href="/users/{{ user. id }}/posts/new" class="btn btn-primary">Add post</a>
 {% endblock %}

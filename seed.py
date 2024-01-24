@@ -1,4 +1,4 @@
-from models import Post, User, db
+from models import Post, User, db, Tag
 from app import app
 
 db.drop_all()
@@ -31,4 +31,13 @@ post8 = Post(title="Breaking News", content="I dont know what is going on in the
 
 
 db.session.add_all([post1, post2, post3, post4, post5, post6, post7, post8])
+db.session.commit()
+
+tag1 = Tag(name="cute")
+tag2 = Tag(name="fun")
+tag3 = Tag(name="bloop")
+tag4 = Tag(name="even more")
+tag5 = Tag(name="Zope")
+
+db.session.add_all([tag1, tag2, tag3, tag4, tag5])
 db.session.commit()

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tag</title>
+</head>
+<body>
+    <h1>Edit Tag</h1>
+    <form action="/tags/{{ tag.id }}/edit/edited" method="POST">
+        <label for="name">Name:</label>
+        <textarea id="name" name="name" required>{{ tag.name }}</textarea><br>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+    <a href="/tags/{{ tag.id }}">
+        <button>Cancel</button>
+    </a>
+</body>
+</html>

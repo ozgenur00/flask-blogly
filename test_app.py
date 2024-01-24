@@ -33,3 +33,32 @@ class BloglyTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('Test User', str(response.data)) 
 
+
+def test_user_detail(self):
+    response = self.app.get('/users/1')
+    self.assertEqual(response.status_code, 200)
+    self.assertIn('User Detail', str(response.data))
+
+
+def test_add_post(self):
+    self.app.post('/users/new', data=dict(
+        firstname='Test',
+        lastname='User',
+        image_url='http://example.com/image.jpg'
+    ))
+
+    response = self.app.post('/users/1/posts/new', data=dict(
+        title='New Post',
+        description='This is a test post.',
+        tags='' 
+    ), follow_redirects=True)
+    self.assertEqual(response.status_code, 200)
+    self.assertIn('New Post', str(response.data))
+
+def test_delete_tag(self):
+
+    self.app.post('/tags/new', data=dict(name='TestTag'))
+    response = self.app.post('/tags/1/delete', follow_redirects=True)
+    self.assertEqual(response.status_code, 200)
+    tag_list_response = self.app.get('/tags')
+    self.assertNotIn('TestTag', str(tag_list_response.data))

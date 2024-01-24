@@ -43,3 +43,22 @@ class Post(db.Model):
         """return nice formatted date"""
 
         return self.created_at.strftime("%a %b %-d %Y, -I:%M %p")
+
+
+class Tag(db.Model):
+    """Tag on a post"""
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, unique=True)
+
+    posts = db.relationship('Post', secondary='posttags',backref='tags')
+    
+class PostTag(db.Model):
+    """Tag that can be added to posts."""
+
+    __tablename__ = 'posttags'
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
