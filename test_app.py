@@ -39,7 +39,7 @@ class BloglyPostsTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('New Test Post', str(response.data))
 
-<<<<<<< HEAD
+
 
 def test_user_detail(self):
     response = self.app.get('/users/1')
@@ -69,7 +69,7 @@ def test_delete_tag(self):
     self.assertEqual(response.status_code, 200)
     tag_list_response = self.app.get('/tags')
     self.assertNotIn('TestTag', str(tag_list_response.data))
-=======
+
     def test_edit_post(self):
         test_post = Post.query.first()
         response = self.app.post(f'/posts/{test_post.id}/edit/edited', data=dict(
@@ -87,4 +87,3 @@ def test_delete_tag(self):
 
 if __name__ == '__main__':
     unittest.main()
->>>>>>> bb531f135d8d527f2777c551d5058d3877c42f0a
